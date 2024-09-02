@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:routing_commerce/model/photo.dart';
-import 'package:routing_commerce/pages/profile_page.dart';
+import 'package:routing_commerce/pages/photo_details_page.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -26,18 +26,28 @@ class HomePage extends StatelessWidget {
   }
 
   Widget body(context) => GridView.builder(
+        padding: EdgeInsets.all(10),
         itemCount: photos.length,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
-          mainAxisSpacing: 5,
-          crossAxisSpacing: 5,
+          mainAxisSpacing: 10,
+          crossAxisSpacing: 10,
         ),
         itemBuilder: (context, index) => GestureDetector(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => PhotoDetailsPage(
+                      src: photos[index],
+                    ),
+                  ));
+            },
             child: Image(
-          fit: BoxFit.cover,
-          image: NetworkImage(
-            photos[index],
-          ),
-        )),
+              fit: BoxFit.cover,
+              image: NetworkImage(
+                photos[index],
+              ),
+            )),
       );
 }
