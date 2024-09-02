@@ -1,3 +1,4 @@
+import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
 
 class PhotoDetailsPage extends StatelessWidget {
@@ -14,7 +15,10 @@ class PhotoDetailsPage extends StatelessWidget {
         centerTitle: true,
       ),
       body: Center(
-        child: Image.network(src),
+        child: ExtendedImage.network(
+          src,
+          mode: ExtendedImageMode.gesture,
+        ),
       ),
     );
   }
