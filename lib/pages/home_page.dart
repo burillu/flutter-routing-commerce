@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:routing_commerce/model/photo.dart';
+import 'package:routing_commerce/pages/photo_details_page.dart';
 
 class HomePage extends StatelessWidget {
+  static const String route = "/";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,8 +39,8 @@ class HomePage extends StatelessWidget {
             onTap: () {
               Navigator.pushNamed(
                 context,
-                "/photo/details",
-                arguments: photos[index],
+                PhotoDetailsPage.route,
+                arguments: PhotoDetailsPageArgs(src: photos[index]),
               );
             },
             child: Image(

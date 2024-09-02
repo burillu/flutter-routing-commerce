@@ -7,12 +7,12 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(useMaterial3: false),
-      initialRoute: "/",
+      initialRoute: HomePage.route,
       onGenerateRoute: (settings) {
         final routes = {
-          "/": (_) => HomePage(),
-          "/photo/details": (_) =>
-              PhotoDetailsPage(src: settings.arguments as String),
+          HomePage.route: (_) => HomePage(),
+          PhotoDetailsPage.route: (_) => PhotoDetailsPage(
+              args: settings.arguments as PhotoDetailsPageArgs),
         };
         return MaterialPageRoute(builder: routes[settings.name]!);
       },
