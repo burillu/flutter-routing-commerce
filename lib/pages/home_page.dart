@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:routing_commerce/model/photo.dart';
-import 'package:routing_commerce/pages/photo_details_page.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -35,13 +34,11 @@ class HomePage extends StatelessWidget {
         ),
         itemBuilder: (context, index) => GestureDetector(
             onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => PhotoDetailsPage(
-                      src: photos[index],
-                    ),
-                  ));
+              Navigator.pushNamed(
+                context,
+                "/photo/details",
+                arguments: photos[index],
+              );
             },
             child: Image(
               fit: BoxFit.cover,
